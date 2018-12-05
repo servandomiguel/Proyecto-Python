@@ -6,6 +6,9 @@ def authenticate():
     auth.set_access_token(cred.access_token, cred.access_token_secret)
     return tweepy.API(auth)
 
+def getAllTweets(account_name):
+    return [tweet for tweet in tweepy.Cursor(api.user_timeline,id=account_name).items()]
+
 if __name__ == '__main__':
     api = authenticate()
     # Prueba de autenticación con tweepy
